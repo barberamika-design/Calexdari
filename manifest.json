@@ -3,7 +3,7 @@
   "short_name": "Calexdari",
   "description": "Calendari mensual amb text sencer",
   "start_url": "./index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
   "orientation": "any",
