@@ -320,6 +320,33 @@ function deleteNote(id){
 
 render();
 renderColorPicker();
+render();
+renderColorPicker();
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  if (document.querySelector('.modal-bg.open')) return;
+
+  const diffX = e.changedTouches[0].screenX - touchStartX;
+  const diffY = e.changedTouches[0].screenY - touchStartY;
+
+  if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+    if (diffX < 0) {
+      changeMonth(1);
+    } else {
+      changeMonth(-1);
+    }
+  }
+}, { passive: true });
+</script>
+
 </script>
 
 <script>
