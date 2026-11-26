@@ -1,4 +1,4 @@
-const CACHE = 'calendari-v19-5-3';
+const CACHE = 'calendari-net-syne-v1';
 const ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {
@@ -19,14 +19,7 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (!e.request.url.startsWith('http')) return;
-
   e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request).then(res => {
-      if (e.request.method === 'GET' && res.ok) {
-        const clone = res.clone();
-        caches.open(CACHE).then(c => c.put(e.request, clone));
-      }
-      return res;
-    }).catch(() => caches.match('./index.html')))
+    caches.match(e.request).then(r => r || fetch(e.request))
   );
 });
