@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Calendari Complet</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0a0a0a">
+
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 /* ===== LINIA 15-35: COLORS I FONT - TOCA AQUÍ PER CANVIAR ESTIL ===== */
@@ -16,13 +19,26 @@
   --green-day: #22c55e;
 }
 * { font-family: 'Syne', sans-serif; font-weight: 700; box-sizing: border-box; }
-html, body { margin:0; background:var(--bg); color:white; overflow-x:hidden; }
-body { -webkit-overflow-scrolling: touch; }
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: white;
+  overflow: hidden;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
 
-/* ===== LINIA 35-45: SENSE BARRA DE SCROLL - NO TOCAR ===== */
-* { scrollbar-width: none; -ms-overflow-style: none; }
-*::-webkit-scrollbar { display:none; width:0; height:0; }
-#calendar-grid { overflow-y:auto; overscroll-behavior: contain; }
+/* ----- LINIA 35-45: SENSE BARRA DE SCROLL - NO TOCAR ----- */
+* { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+*::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+.grid {
+  flex: 1;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
 
 /* HEADER */
 .header { display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); z-index:10; }
